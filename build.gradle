@@ -1,0 +1,24 @@
+apply plugin: 'cpp'
+
+model {
+    components {
+        hello(NativeLibrarySpec)
+        output(NativeLibrarySpec)
+        input(NativeLibrarySpec)
+    }
+}
+
+model {
+    components {
+        main(NativeExecutableSpec) {
+            sources {
+                cpp {
+                    lib library: "hello"
+                    lib library: "output"
+                    lib library: "input"
+                }
+
+            }
+        }
+    }
+}
